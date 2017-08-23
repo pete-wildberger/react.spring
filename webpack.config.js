@@ -7,13 +7,14 @@ module.exports = {
     cache: true,
     debug: true,
     output: {
-        path: __dirname,
-        filename: './src/main/resources/static/built/bundle.js'
+        path: path.resolve(__dirname, "target") + "/classes/static/built/",
+        filename: 'bundle.js'
     },
     module: {
         loaders: [
             {
-                test: path.join(__dirname, '.'),
+                test: /\.js?/,
+                include: path.resolve(__dirname, "src"),
                 exclude: /(node_modules)/,
                 loader: 'babel',
                 query: {
